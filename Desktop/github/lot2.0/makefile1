@@ -1,0 +1,22 @@
+OBJ:=obj/main.o obj/admin.o\
+obj/game_2048.o obj/issue.o \
+obj/login.o obj/menu_view.o \
+obj/public.o\
+obj/regist.o \
+obj/user_lottery_link.o\
+obj/user.o obj/worker.o
+
+CFLAGS:=-Wall -c -Iinclude#编译标志位  
+TARGET:=bin/app.1.0
+CC:=gcc
+
+#产生目标文件
+$(TARGET): $(OBJ)       
+	$(CC) -o $@ $^
+#生成.o文件
+obj/%.o:src/%.c
+	$(CC) -o $@ $(CFLAGS) $^
+
+.PHONY:clean
+clean:
+	-rm -rf $(OBJ)
